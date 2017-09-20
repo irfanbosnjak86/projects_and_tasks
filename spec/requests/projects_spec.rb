@@ -24,4 +24,73 @@ RSpec.describe "Projects Request", type: :request do
       end
     end
   end
+
+  context "User with valid credentials" do 
+    before do
+      @project = Project.create(title: 'Test', description: 'Tesddas dasda', user_id: @user.id)
+      login_as(@user)
+    end
+
+    describe "GET /projects" do
+      it "responds to status 200" do
+        get "/projects"
+        expect(response.status).to eq 200
+      end
+    end
+
+    describe "GET /projects/new" do
+      it "responds to status 200" do
+        get "/projects/new"
+        expect(response.status).to eq 200
+      end
+    end
+
+    describe "GET /projects/:id/edit" do
+      it "responds to status 200" do
+        get "/projects/#{@project.id}/edit"
+        expect(response.status).to eq 200
+      end
+    end
+
+    describe "GET /projects/:id" do
+      it "responds to status 200" do
+        get "/projects/#{@project.id}"
+        expect(response.status).to eq 200
+      end
+    end
+  end
+
+  context "User with invalid credentials" do 
+    before do
+      @project = Project.create(title: 'Test', description: 'Tesddas dasda', user_id: @user.id)
+    end
+
+    describe "GET /projects" do
+      it "responds to status 200" do
+        get "/projects"
+        expect(response.status).to eq 302
+      end
+    end
+
+    describe "GET /projects/new" do
+      it "responds to status 200" do
+        get "/projects/new"
+        expect(response.status).to eq 302
+      end
+    end
+
+    describe "GET /projects/:id/edit" do
+      it "responds to status 200" do
+        get "/projects/#{@project.id}/edit"
+        expect(response.status).to eq 302
+      end
+    end
+
+    describe "GET /projects/:id" do
+      it "responds to status 200" do
+        get "/projects/#{@project.id}"
+        expect(response.status).to eq 302
+      end
+    end
+  end
 end
