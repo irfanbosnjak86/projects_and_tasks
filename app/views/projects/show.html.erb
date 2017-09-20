@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-6">  
+    <div class="panel panel-primary">
+      <div class="panel-heading"><%= @project.title %></div>
+  
+      <div class="panel-body">
+        <strong>Project Desription:</strong>
+        <br>
+        <p><%= @project.description %></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" id="links">
+  <%= link_to "Back", root_path, class: "btn btn-default" %>
+</div>

@@ -21,7 +21,10 @@
       <%= f.text_area :description, class: 'form-control', rows: "8" %>
       <br>
 
-      <%= f.submit "Save", class: "btn btn-success" %>
+      <div class="row" id="links">
+        <%= f.submit "Save", class: "btn btn-success" %>
+        <%= link_to "Back", root_path, class: "btn btn-default" %>
+      </div>
     </div>
   </div>
 <% end %>
