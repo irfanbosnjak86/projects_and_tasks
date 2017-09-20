@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @tasks = Task.where(project_id: @project.id)
   end
 
   def new

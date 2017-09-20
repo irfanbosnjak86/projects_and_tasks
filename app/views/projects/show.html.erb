@@ -9,8 +9,43 @@
         <p><%= @project.description %></p>
       </div>
     </div>
+
+  <div class="row">
+    <div class="col-md-6">  
+      <%= form_for([@project, @project.tasks.build], html: {class: 'form-horizontal'}) do |f| %>
+        <div class="form-group">
+          <%= f.label :title, "New Task" %><br />
+          <%= f.text_field :title, class: 'form-control'  %>
+
+          <%= f.label :description %>
+          <%= f.text_area :description, class: 'form-control'  %>
+          
+          <%= f.label :deadline %>
+          <%= f.date_select :deadline, as: :date, class: 'form-control'  %>
+
+          <%= f.hidden_field :user_id, value: @project.user_id %>
+
+          <p><%= f.submit "Add Task" %></p>
+        </div>
+      <%end%>
+    </div>
+  </div>
+  </div>
+  <div class="col-md-6">  
+    <% @tasks.each do |task| %>
+      <div class="panel panel-primary">
+        <div class="panel-heading"><%= task.title %></div>
+    
+        <div class="panel-body">
+          <strong>Task Desription:</strong>
+          <br>
+          <p><%= task.description %></p>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
+
 <div class="row" id="links">
   <%= link_to "Back", root_path, class: "btn btn-default" %>
 </div>
