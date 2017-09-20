@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_project, only: [:edit, :update]
   
   def index
     @projects = Project.all
@@ -21,9 +22,26 @@ class ProjectsController < ApplicationController
     end 
   end
 
+  def edit
+  end
+
+  def update
+    if @project.update(project_params)
+      flash[:notice] = "Project has been updated"
+      redirect_to root_path
+    else 
+      flash[:error] = "Project has not been updated"
+      render :edit
+    end 
+  end
+
   private
 
   def project_params
     params.require(:project).permit(:title, :description, :user_id)
+  end
+
+  def set_project
+    @project = Project.find(params[:id])
   end
 end
