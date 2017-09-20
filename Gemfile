@@ -22,6 +22,7 @@ gem 'devise', '~> 4.3'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.6'
 end
 
 group :development do
