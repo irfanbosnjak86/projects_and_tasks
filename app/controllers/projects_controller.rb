@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:edit, :update, :show]
+  before_action :set_project, only: [:edit, :update, :show, :destroy]
   
   def index
     @projects = Project.all
@@ -38,6 +38,11 @@ class ProjectsController < ApplicationController
     end 
   end
 
+  def destroy
+    @project.destroy
+    flash[:notice] = "Projects has been deleted"
+    redirect_to root_path
+  end
   private
 
   def project_params
