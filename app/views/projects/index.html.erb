@@ -1,17 +1,23 @@
-<h2>Projects</h2>
+<div class="row"> 
+  <header>
+  <h2>
+    Projects
+    <%= link_to "New Project", new_project_path, class: "btn btn-primary pull-right" %>
+  </h2> 
+</div>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-  </tr>
+<div class="row">
+  <table class="table table-striped">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
 
-  <tr>
-    <% @projects.each do |project| %>
-      <td><%= project.title %></td>
-      <td><%= project.description %></td>
-    <% end %>
-  </tr>
-</table>
-
-<%= link_to "New Project", new_project_path %>
+    <tr>
+      <% @projects.each do |project| %>
+        <td><%= project.title %></td>
+        <td><%= project.description %></td>
+      <% end %>
+    </tr>
+  </table>
+</div>

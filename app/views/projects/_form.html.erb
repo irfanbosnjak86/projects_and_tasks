@@ -1,6 +1,6 @@
-<%= form_for @project do |f| %>
+<%= form_for @project, html: {class: 'form-horizontal'} do |f| %>
   <% if @project.errors.any? %>
-    <div id="error-explanation">
+    <div class="alert alert-danger" id="error-explanation">
      <h2><%= pluralize(@project.errors.count, "error") %>
       prohibited this project from being saved:</h2>
 
@@ -11,16 +11,17 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="col-md-5">
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control' %>
+      <br>
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control', rows: "8" %>
+      <br>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <br>
-
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-
-  <br>
-
-  <%= f.submit "Save" %>
+      <%= f.submit "Save", class: "btn btn-success" %>
+    </div>
+  </div>
 <% end %>
