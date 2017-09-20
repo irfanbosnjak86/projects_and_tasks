@@ -1,1 +1,17 @@
-<h2>Index Page</h2>
+<h2>Projects</h2>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <% @projects.each do |project| %>
+      <td><%= project.title %></td>
+      <td><%= project.description %></td>
+    <% end %>
+  </tr>
+</table>
+
+<%= link_to "New Project", new_project_path %>
