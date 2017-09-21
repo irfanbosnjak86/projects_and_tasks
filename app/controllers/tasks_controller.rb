@@ -10,7 +10,6 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
     respond_to do |format|
-      format.html
       format.js { render 'edit.js'}
     end
   end
@@ -19,6 +18,13 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
     @task.update(tasks_params)
+    redirect_to project_path(@project)
+  end
+
+  def destroy
+    @project = Project.find(params[:project_id])
+    @task = Task.find(params[:id])
+    @task.destroy
     redirect_to project_path(@project)
   end
 
