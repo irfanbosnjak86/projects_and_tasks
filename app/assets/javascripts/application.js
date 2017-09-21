@@ -25,4 +25,13 @@ $(document).on('turbolinks:load', function(){
       data: {"completed": this.checked}
     });
   });
+  
+  $('#task_title').on('input', function(){
+      if( $(this).val() == ""){
+        $('.add_task').prop('disabled', true);
+      }
+      else {
+        $('.add_task').prop('disabled', false);
+      }
+  });
 });

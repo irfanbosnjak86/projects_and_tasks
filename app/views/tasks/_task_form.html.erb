@@ -1,7 +1,7 @@
 <div class="panel panel-primary">
   <%= form_for(@task, url: project_task_path, remote: true) do |f| %>  
     <div class="panel-heading">
-      Title: <%= f.text_field :title %> 
+      Title: <%= f.text_field :title, id: 'edit_title' %> 
     </div>
 
     <div class="panel-body">
@@ -12,7 +12,7 @@
       <%= f.date_select :deadline, class: 'form-control'  %></p>
     </div>
     <div class="panel-footer">
-      <%= f.submit "Save", class: 'btn btn-success' %>
+      <%= f.submit "Save", class: 'btn btn-success task_save' %>
     </div>
   <% end %>
 </div>
