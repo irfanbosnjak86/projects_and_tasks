@@ -27,11 +27,11 @@ $(document).on('turbolinks:load', function(){
   });
   
   $('#task_title').on('input', function(){
-      if( $(this).val() == ""){
-        $('.add_task').prop('disabled', true);
-      }
-      else {
-        $('.add_task').prop('disabled', false);
-      }
+    if( $(this).val() == ""){
+      $('.add_task').prop('disabled', true);
+    }
+    else {
+      $('.add_task').prop('disabled', false);
+    }
   });
 });

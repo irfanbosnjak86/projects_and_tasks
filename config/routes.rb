@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :projects do
     resources :tasks do
       put :set_status, on: :member
+      get :up, on: :member
+      get :down, on: :member
     end
   end
 end
