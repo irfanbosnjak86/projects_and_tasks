@@ -1,9 +1,12 @@
-<div class="panel panel-primary">
+<div class="panel panel-primary" id="task_<%= task.id %>">
   <div class="panel-heading"><%= task.title %></div>
 
   <div class="panel-body">
     <strong>Task Desription:</strong>
     <br>
     <p><%= task.description %></p>
+  </div>
+  <div class="panel-footer">
+    <%= link_to "Edit",  edit_project_task_path(task, project_id: @project.id), class: "edit_task" ,id: "task_#{task.id}", remote: true %>
   </div>
 </div>

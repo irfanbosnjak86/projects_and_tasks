@@ -6,6 +6,22 @@ class TasksController < ApplicationController
     redirect_to project_path(@project)
   end
 
+  def edit
+    @project = Project.find(params[:project_id])
+    @task = Task.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js { render 'edit.js'}
+    end
+  end
+
+  def update
+    @project = Project.find(params[:project_id])
+    @task = Task.find(params[:id])
+    @task.update(tasks_params)
+    redirect_to project_path(@project)
+  end
+
   private
 
   def tasks_params
