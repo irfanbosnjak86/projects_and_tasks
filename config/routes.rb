@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: 'projects#index'
 
   resources :projects do
-    resources :tasks
+    resources :tasks do
+      put :set_status, on: :member
+    end
   end
 end

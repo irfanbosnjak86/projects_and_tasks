@@ -15,3 +15,14 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function(){
+  $(".task-check").bind('change', function(){
+    var url = $(this).data('update-url')
+    $.ajax({
+      url: url,
+      type: 'PUT',
+      data: {"completed": this.checked}
+    });
+  });
+});

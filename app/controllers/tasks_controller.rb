@@ -28,6 +28,11 @@ class TasksController < ApplicationController
     redirect_to project_path(@project)
   end
 
+  def set_status
+    @task = Task.find(params[:id])
+    @task.update_attribute(:done, params[:completed])
+  end
+
   private
 
   def tasks_params
